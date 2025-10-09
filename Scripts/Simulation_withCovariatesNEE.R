@@ -110,7 +110,7 @@ p4 <- ggplot(data=res, aes(x=n, y=mean_b1_si)) +
 
 mean2 <- grid.arrange(p1, p2, p3, p4, nrow=2, ncol=2)
 mean2
-ggsave(filename="mean2.pdf", 
+ggsave(filename="Figs/mean2.pdf", 
        plot=mean2, 
        width=10, height=8)
 
@@ -137,7 +137,7 @@ p4 <- ggplot(data=res, aes(x=n, y=mse_b1_si)) +
 
 mse2 <- grid.arrange(p1, p2, p3, p4, nrow=2, ncol=2)
 mse2
-ggsave(filename="mse2.pdf", 
+ggsave(filename="Figs/mse2.pdf", 
        plot=mse2, 
        width=10, height=8)
 
