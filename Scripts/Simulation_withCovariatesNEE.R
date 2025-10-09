@@ -1,21 +1,6 @@
 library(gamlss)
 library(RelDists)
 
-#-----------------------------------------------------------------
-#------------------ EJEMPLO CON LA DISTRIBUCION ------------------
-#----------------------- Zero inflated Poisson -------------------
-#---------------------------- NEE --------------------------------
-#-----------------------------------------------------------------
-
-# En la distribucion NEE
-# mu > 0,         por tanto usaremos funcion de enlace log
-# sigma > 0  por tanto usaremos funcion de enlace log
-
-# Creando las funciones de enlace inversas
-#logit_inv <- function(x) exp(x) / (1 + exp(x))
-# No vamos a crear log_inv porque esa funcion ya existe y 
-# llama exp( )
-
 # The parameters ----------------------------------------------------------
 # Los siguientes son los valores de los betas para el modelo de regresion
 # debemos chequear que esos numeros den valores correctos de mu y sigma
@@ -32,8 +17,8 @@ true_g1_si <-  2.3   # slope for sigma
 simul_one <- function(size) {
   x1 <- runif(n=size)
   x2 <- runif(n=size)
-  mu    <- exp(true_b0_mu + true_b1_mu * x1) # Aprox mu = 2
-  sigma <- exp(true_g0_si + true_g1_si * x2) # Aprox sigma = 255
+  mu    <- exp(true_b0_mu + true_b1_mu * x1) # Aprox mu = 2.5
+  sigma <- exp(true_g0_si + true_g1_si * x2) # Aprox sigma = 25
   y <- rNEE(n=size, mu=mu, sigma=sigma)
   mod <- NULL
   mod <- try(gamlss(y~x1, sigma.fo=~x2, family="NEE",
@@ -58,7 +43,7 @@ simul <- function(n) {
 # Aqui se definen los valores de tamano muestral n
 # Luego se define el numero de repeticiones
 n <- seq(from=100, to=1000, by=100)
-nrep <- 90
+nrep <- 15
 
 values <- expand.grid(n=n)
 values

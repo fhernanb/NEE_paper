@@ -1,19 +1,8 @@
 library(gamlss)
 library(RelDists)
 
-#-----------------------------------------------------------------
-#------------------ EJEMPLO CON LA DISTRIBUCION ------------------
-#----------------- New Exponentiated Exponential-------------------
-#---------------------------- NEE --------------------------------
-#-----------------------------------------------------------------
-
-# En la distribucion NEE
-# mu > 0,         por tanto usaremos funcion de enlace log
-# sigma > 0  por tanto usaremos funcion de enlace log
-
-
 # The parameters ----------------------------------------------------------
-# Combination of section 4.2 SimulationStudy
+# Combination of section 4.2 Simulation Study
 true_mu    <- 2.5
 true_sigma <- 25
 
@@ -46,7 +35,7 @@ simul <- function(n) {
 # Aqui se definen los valores de tamano muestral n
 # Luego se define el numero de repeticiones
 n <- seq(from=100, to=1000, by=100)
-nrep <- 50
+nrep <- 15
 
 values <- expand.grid(n=n)
 values
