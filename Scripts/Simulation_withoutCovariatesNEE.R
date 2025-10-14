@@ -76,12 +76,14 @@ res
 p1 <- ggplot(data=res, aes(x=n, y=mean_mu)) + 
   geom_line() + 
   labs(x="n", y=expression(hat(mu))) +
-  geom_line(y=true_mu, col="red", lty="dashed")
+  geom_line(y=true_mu, col="red", lty="dashed") +
+  ylim(true_mu - 0.1, true_mu + 0.1)
 
 p2 <- ggplot(data=res, aes(x=n, y=mean_sigma)) + 
   geom_line() + 
   labs(x="n", y=expression(hat(sigma))) +
-  geom_line(y=true_sigma, col="red", lty="dashed")
+  geom_line(y=true_sigma, col="red", lty="dashed") +
+  ylim(true_sigma - 2, true_sigma + 2)
 
 mean1 <- grid.arrange(p1, p2, nrow = 1)
 mean1

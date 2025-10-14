@@ -66,7 +66,7 @@ mean(num$nn)
 min(num$nn)
 
 # Para obtener la metricas
-trim <- 0.05
+trim <- 0.10
 
 res <- dt %>% 
   drop_na() %>% 
@@ -88,13 +88,15 @@ p1 <- ggplot(data=res, aes(x=n, y=mean_b0_mu)) +
   geom_line() + 
   labs(x="n", y=expression(hat(beta)[0]), 
        title=expression("Mean for the intercept in" ~ mu)) +
-  geom_line(y=true_b0_mu, col="red", lty="dashed")
+  geom_line(y=true_b0_mu, col="red", lty="dashed") + 
+  ylim(-1.4, -1.38)
 
 p2 <- ggplot(data=res, aes(x=n, y=mean_b1_mu)) + 
   geom_line() + 
   labs(x="n", y=expression(hat(beta)[1]),
        title=expression("Mean for the slope in" ~ mu)) +
-  geom_line(y=true_b1_mu, col="red", lty="dashed")
+  geom_line(y=true_b1_mu, col="red", lty="dashed") + 
+  ylim(4.595, 4.603)
 
 p3 <- ggplot(data=res, aes(x=n, y=mean_b0_si)) + 
   geom_line() + 
